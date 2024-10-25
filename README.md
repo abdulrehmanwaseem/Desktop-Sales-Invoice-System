@@ -71,8 +71,7 @@ To set up the application locally, follow these steps:
 Create a `.env` file in the root directory and add the following variables:
 
 ```plaintext
-APP_PORT=your_app_port
-DATA_STORAGE_PATH=your_data_storage_path
+VITE_PRODUCT_OWNER_NAME="Desktop Sales Invoice System"
 ```
 
 ## Contributing
