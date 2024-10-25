@@ -73,7 +73,7 @@ To set up the application locally, follow these steps:
 Create a `.env` file in the root directory and add the following variables:
 
 ```plaintext
-VITE_PRODUCT_OWNER_NAME="Desktop Sales Invoice System"
+VITE_PRODUCT_OWNER_NAME="Sales Invoice System"
 ```
 
 ## Contributing
