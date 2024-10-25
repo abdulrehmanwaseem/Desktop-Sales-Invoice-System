@@ -9,8 +9,7 @@ export const modal = createSlice({
     sendId: false,
     callback: null,
     refetch: null,
-    data: null,
-    ref: null
+    data: null
   },
   reducers: {
     openModal: (state, action) => {
@@ -21,7 +20,6 @@ export const modal = createSlice({
       state.callback = action.payload.callback
       state.refetch = action.payload.refetch
       state.data = action.payload.data
-      state.ref = action.payload.ref
     },
     closeModal: (state) => {
       state.modalType = ''
@@ -31,7 +29,6 @@ export const modal = createSlice({
       state.callback = null
       state.refetch = null
       state.data = null
-      state.ref = null
     }
   }
 })

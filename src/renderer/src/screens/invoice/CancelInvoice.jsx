@@ -6,6 +6,7 @@ import { closeModal } from '../../redux/slice/modal'
 const CancelInvoiceModal = () => {
   const dispatch = useDispatch()
   const { data, callback, refetch } = useSelector((state) => state.modal)
+
   const formSubmitHandler = async (e) => {
     e.preventDefault()
     try {
@@ -16,6 +17,7 @@ const CancelInvoiceModal = () => {
       console.log(error)
     }
   }
+
   return (
     <form className="flex flex-col gap-1" onSubmit={formSubmitHandler}>
       <p>Are you sure? you want to cancel invoice!</p>

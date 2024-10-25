@@ -10,7 +10,7 @@ import CancelInvoiceModal from '../screens/invoice/CancelInvoice'
 
 const Modal = () => {
   const dispatch = useDispatch()
-  const { open, modalType, ref, title } = useSelector((state) => state.modal)
+  const { open, modalType, title } = useSelector((state) => state.modal)
 
   const dialogWidth = modalType === 'invoice' ? '60vw' : '35vw'
 
@@ -28,14 +28,14 @@ const Modal = () => {
       style={{ minWidth: dialogWidth }}
       breakpoints={{ '960px': '75vw', '641px': '100vw' }}
     >
-      <div className="m-0 dark:text-bodydark1">{checkModal(modalType, ref)}</div>
+      <div className="m-0 dark:text-bodydark1">{checkModal(modalType)}</div>
     </Dialog>
   )
 }
 
 export default Modal
 
-const checkModal = (name, ref) => {
+const checkModal = (name) => {
   let component = null
   switch (name) {
     case 'confirmation':
@@ -50,9 +50,8 @@ const checkModal = (name, ref) => {
     case 'cancelInvoice':
       component = <CancelInvoiceModal />
       break
-
     case 'previewInvoice':
-      component = <PreviewInvoiceModal ref={ref} />
+      component = <PreviewInvoiceModal />
       break
     case '':
       component = <span>No Modal Find With This Type</span>

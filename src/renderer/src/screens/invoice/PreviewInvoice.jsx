@@ -1,16 +1,42 @@
-import React, { forwardRef } from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { currencyFormatter } from '../../lib/currencyLogic'
 import moment from 'moment'
+import { useReactToPrint } from 'react-to-print'
+import { Download } from 'lucide-react'
 
-const PreviewInvoiceModal = forwardRef((props, ref) => {
+const PreviewInvoiceModal = () => {
+  const contentRef = useRef()
+
   const { data } = useSelector((state) => state.modal)
-  const { id, date, amount, items } = data || props.data
+  const { id, date, amount, items } = data
+
+  const handlePreview = (target) => {
+    return new Promise((resolve, reject) => {
+      try {
+        const data = target.contentWindow.document.documentElement.outerHTML
+        const blob = new Blob([data], { type: 'text/html' })
+        const url = URL.createObjectURL(blob)
+        const fileName = `Invoice#${id}`
+
+        window.api.previewComponent(url, fileName)
+        resolve()
+      } catch (error) {
+        toast.error('Failed to download invoice. Please try again.')
+        reject(error)
+      }
+    })
+  }
+
+  const handleInvoicePreview = useReactToPrint({
+    contentRef: contentRef,
+    print: handlePreview
+  })
 
   return (
     <>
-      <div className="border-2 p-6">
-        <div ref={ref} className="text-xs text-black dark:text-white">
+      <div className="border-2 p-6 ">
+        <div ref={contentRef} className="text-xs text-black dark:text-white">
           <div className="flex items-start justify-between mb-3 text-right">
             <div className="flex flex-col  items-start ">
               <div className="text-gray-700 font-semibold text-lg mb-2">
@@ -55,8 +81,13 @@ const PreviewInvoiceModal = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
+      <Download
+        className="cursor-pointer absolute right-16 top-[1.8rem] text-slate-500 hover:text-slate-700"
+        size={20}
+        onClick={handleInvoicePreview}
+      />
     </>
   )
-})
+}
 
 export default PreviewInvoiceModal
