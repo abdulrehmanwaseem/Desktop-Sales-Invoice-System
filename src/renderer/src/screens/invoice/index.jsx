@@ -46,9 +46,9 @@ const Invoice = () => {
   ]
 
   const customActions = (data) => {
-    const { status } = data
+    const { isCancelled } = data
     return (
-      <span className="flex justify-center items-center gap-3 actions">
+      <span className="flex items-center gap-3 actions">
         <Eye
           className="cursor-pointer hover:text-slate-400"
           strokeWidth={2.5}
@@ -63,7 +63,7 @@ const Invoice = () => {
           }
         />
 
-        {status !== 'Cancelled' && (
+        {isCancelled && (
           <X
             className="cursor-pointer hover:text-slate-400"
             strokeWidth={2.5}

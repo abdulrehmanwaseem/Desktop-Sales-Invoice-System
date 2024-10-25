@@ -1,25 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DarkModeSwitcher from './DarkModeSwitcher'
-import { useDispatch, useSelector } from 'react-redux'
-import { setUnAuthenticated } from '../../redux/slice/auth'
-import { toast } from 'react-toastify'
 
-const Header = ({ sidebarOpen, setToggleSidebar, setSidebarOpen }) => {
-  const { userData } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const logoutHandler = async () => {
-    console.log('logout')
-    // try {
-    //   await trigger(1)
-    //   dispatch(setUnAuthenticated())
-    //   navigate('/')
-    //   toast.success('User logged out successfully')
-    // } catch (error) {
-    //   console.log(error)
-    // }
-  }
+const Header = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">

@@ -4,15 +4,9 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { homedir } from 'os'
 import { ensureDir, ensureFile, readJSON, writeJson, writeFileSync } from 'fs-extra'
+import 'dotenv/config'
 
 function createWindow() {
-  const PRODUCT_OWNER_NAME = 'Sales Invoice System'
-
-  // const productOwnerNameVite = process.env.VITE_PRODUCT_OWNER_NAME
-  // const productOwnerNameMain = process.env.MAIN_PRODUCT_OWNER_NAME
-  // console.log('VITE Product Owner Name:', productOwnerNameVite)
-  // console.log('Main Product Owner Name:', productOwnerNameMain)
-
   const mainWindow = new BrowserWindow({
     width: 900,
     height: 670,
@@ -20,7 +14,7 @@ function createWindow() {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     center: true,
-    title: PRODUCT_OWNER_NAME,
+    title: process.env.VITE_PRODUCT_OWNER_NAME,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -31,12 +25,14 @@ function createWindow() {
     mainWindow.show()
   })
 
-  mainWindow.webContents.openDevTools()
-
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
   })
+
+  if (is.dev) {
+    mainWindow.webContents.openDevTools()
+  }
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
