@@ -1,5 +1,7 @@
 # Desktop Sales Invoice System
 
+![{3E73587C-EA36-46E4-A7F3-9F74E83A2442}](https://github.com/user-attachments/assets/c39a7a85-b3a5-43d9-b788-ef0d6626805e)
+
 A streamlined desktop-based invoicing system built using Electron-Vite, React, Node.js, and the file system module, providing an intuitive experience for creating invoices, tracking sales, and managing item inventory—all stored locally on your PC.
 
 ## Technologies Used
@@ -71,7 +73,7 @@ To set up the application locally, follow these steps:
 Create a `.env` file in the root directory and add the following variables:
 
 ```plaintext
-VITE_PRODUCT_OWNER_NAME="Desktop Sales Invoice System"
+VITE_PRODUCT_OWNER_NAME="Sales Invoice System"
 ```
 
 ## Contributing
@@ -84,4 +86,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or feedback, reach out to [Your Name](mailto:your.email@example.com).
+For questions or feedback, reach out to [Abdul Rehman](mailto:abdulrehman.code1@gmail.com).
