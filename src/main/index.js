@@ -6,13 +6,12 @@ import { homedir } from 'os'
 import { ensureDir, ensureFile, readJSON, writeJson, writeFileSync } from 'fs-extra'
 
 function createWindow() {
-  const PRODUCT_OWNER_NAME = 'test'
+  const PRODUCT_OWNER_NAME = 'Sales Invoice System'
 
-  const productOwnerNameVite = process.env.VITE_PRODUCT_OWNER_NAME
-  const productOwnerNameMain = process.env.MAIN_PRODUCT_OWNER_NAME
-
-  console.log('VITE Product Owner Name:', productOwnerNameVite) // Should log "BOSS"
-  console.log('Main Product Owner Name:', productOwnerNameMain)
+  // const productOwnerNameVite = process.env.VITE_PRODUCT_OWNER_NAME
+  // const productOwnerNameMain = process.env.MAIN_PRODUCT_OWNER_NAME
+  // console.log('VITE Product Owner Name:', productOwnerNameVite)
+  // console.log('Main Product Owner Name:', productOwnerNameMain)
 
   const mainWindow = new BrowserWindow({
     width: 900,
